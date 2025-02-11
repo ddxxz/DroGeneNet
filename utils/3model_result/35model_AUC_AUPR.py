@@ -167,15 +167,15 @@ indica_GNNLink_label = np.copy(indica_CNNC_label)
 num_swaps =5000
 indices = np.random.choice(len(indica_GNNLink_label), num_swaps * 2, replace=False)
 
-# 执行索引交换
-for i in range(0, len(indices), 2):
-    # 交换两个随机选择的元素
-    indica_GNNLink_label[indices[i]], indica_GNNLink_label[indices[i+1]] = indica_GNNLink_label[indices[i+1]], indica_GNNLink_label[indices[i]]
 
-data_pairs = [(indica_genie3_label, indica_genie3_predict), (indica_GNE_label, indica_GNE_predict), (indica_CNNC_label, indica_CNNC_predict),(indica_GNNLink_label, indica_CNNC_predict), (indica_Graphormer1Link_label, indica_Graphormer1Link_predict),
-            (japonica_genie3_label, japonica_genie3_predict), (indica_GNE_label, indica_GNE_predict),(japonica_GNE_label, japonica_GNE_predict),  (indica_CNNC_label, indica_CNNC_predict), (japonica_Graphormer1Link_label, japonica_Graphormer1Link_predict),
-            (zeamays_genie3_label, zeamays_genie3_predict), (zeamays_GNE_label, zeamays_GNE_predict), (indica_CNNC_label, indica_CNNC_predict),(indica_GNNLink_label, indica_CNNC_predict), (zeamays_Graphormer1Link_label, zeamays_Graphormer1Link_predict),
-               ]
+# for i in range(0, len(indices), 2):
+#     indica_GNNLink_label[indices[i]], indica_GNNLink_label[indices[i+1]] = indica_GNNLink_label[indices[i+1]], indica_GNNLink_label[indices[i]]
+
+# data_pairs = [(indica_genie3_label, indica_genie3_predict), (indica_GNE_label, indica_GNE_predict), (indica_CNNC_label, indica_CNNC_predict),(indica_GNNLink_label, indica_CNNC_predict), (indica_Graphormer1Link_label, indica_Graphormer1Link_predict),
+#             (japonica_genie3_label, japonica_genie3_predict), (indica_GNE_label, indica_GNE_predict),(japonica_GNE_label, japonica_GNE_predict),  (indica_CNNC_label, indica_CNNC_predict), (japonica_Graphormer1Link_label, japonica_Graphormer1Link_predict),
+#             (zeamays_genie3_label, zeamays_genie3_predict), (zeamays_GNE_label, zeamays_GNE_predict), (indica_CNNC_label, indica_CNNC_predict),(indica_GNNLink_label, indica_CNNC_predict), (zeamays_Graphormer1Link_label, zeamays_Graphormer1Link_predict),
+#                ]
+
 groups = ['GENIE3','GNE','CNNC','GNNLink','GraphomerLink']
 titles = ['AUC-indica','AUC-japonica','AUC-zeamays','AUPR-indica','AUPR-japonica','AUPR-zeamays']
 colors = ['#D32F2F',  '#FBC02D', '#388E3C', '#1976D2', '#7B1FA2', 
