@@ -1,0 +1,4 @@
+# @package dset
+tr_csv: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/Train_set.csv
+cv_csv: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/Validation_set.csv
+tt_csv: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/Test_set.csv

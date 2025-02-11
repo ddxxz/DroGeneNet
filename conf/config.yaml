@@ -1,0 +1,93 @@
+defaults:
+  - _self_
+  - link: data_gse
+  - expression: gse
+  - override hydra/job_logging: colorlog
+  - override hydra/hydra_logging: colorlog
+
+sacred: 0
+amp: 0
+model: 'cnnformer'
+name: "a"
+batch_size: 256  #The size of each batch
+epochs: 100
+lr:  1e-3
+optim: NAdam
+water_class: all
+lr_scheduler: MultiStepLR
+num_head: [3,3]  #Number of head attentions
+alpha: 0.2  #Alpha for the leaky_relu
+hidden_dim: [128,64,32]  #The dimension of hidden layer
+output_dim: 16 #The dimension of latent layer
+loop: False  #whether to add self-loop in adjacent matrix
+seed: 8  #Random seed
+type: dot  # score metric
+flag: False   #the identifier whether to conduct causal inference
+reduction: concat  #how to integrate multihead attention
+train: 1
+training: 1
+species: zeamays
+fine_tune: False
+adj_type: adj  #adj_drop adj_weight 
+weight_decay: 1e-3
+history_file: params.json
+gpu_device: "cuda:0"
+device: "cuda:0"
+data_type: RNA
+visualize: False
+
+deepsem_task: non_celltype_GRN
+deepsem_setting: default
+deepsem_data_file: The input scRNA-seq gene expression file.
+deepsem_net_file: The ground truth of GRN. Only used in GRN inference task if available.
+deepsem_alpha: 100 #The loss coefficient for L1 norm of W
+deepsem_beta: 1 #The loss coefficient for KL term (beta-VAE)
+deepsem_lr_step_size: 0.99 #The step size of learning rate decay.
+deepsem_gamma: 0.95 #The decay factor of learning rate
+deepsem_n_hidden: 128 #The Number of hidden neural used in MLP
+deepsem_K: 1 #Number of Gaussian kernel in GMM, default =1
+deepsem_K1: 1 #The Number of epoch for optimize MLP. Notes that we optimize MLP and W alternately. The default setting denotes to optimize MLP for one epoch then optimize W for two epochs.
+deepsem_K2: 2 #The Number of epoch for optimize W. Notes that we optimize MLP and W alternately. The default setting denotes to optimize MLP for one epoch then optimize W for two epochs.
+deepsem_save_name: /tmp
+
+
+output_root: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/out/
+# Hydra config
+hydra:
+  run:
+    dir: ${output_root}/exp_${name}
+  job:
+    config:
+      # configuration for the ${hydra.job.override_dirname} runtime variable
+      override_dirname:
+        kv_sep: '='
+        item_sep: ','
+        # Remove all paths, as the / in them would mess up things
+        # Remove params that would not impact the training itself
+        # Remove all slurm and submit params.
+        # This is ugly I know...
+        exclude_keys: [
+          'hydra.job_logging.handles.file.filename',
+          'dset',
+          'expression',
+          'dropout',
+
+        ]
+  job_logging:
+    handlers:
+      file:
+        class: logging.FileHandler
+        mode: a
+        #formatter: colorlog
+        filename: trainer${train}.log
+      console:
+        class: logging.StreamHandler
+        #formatter: colorlog
+        stream: ext://sys.stderr
+
+  hydra_logging:
+    handlers:
+      console:
+        class: logging.StreamHandler
+        #formatter: colorlog
+        stream: ext://sys.stderr

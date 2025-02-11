@@ -1,0 +1,10 @@
+# @package expression
+exp_file: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/ExpressionData_unique_networkfilter.pkl
+tf_file: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/TF.csv
+target_file: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/Target.csv
+all_genefile: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/ALL_Genefile.csv
+all_label: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/all_labels.csv
+CK_exp: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/CK_expression.csv
+CD_exp: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/CD_expression.csv
+CE_exp: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/data/TF/japonica/CE_expression.csv
+output_path: /home/win/16t2/study/deep_learning/gene/project/DroGeneNet/out/gene_result.csv
