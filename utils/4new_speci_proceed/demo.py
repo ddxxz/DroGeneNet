@@ -15,23 +15,6 @@
 
 # print(f"排序后的列名已保存到 {output_csv_path}")
 
-# import os
-# import pandas as pd
-
-# # 定义文件夹路径
-# folder_path = '/home/win/4T/GeneDL/DXZ_DL/expriments/RNASeq/data/Count_wheat_drought'
-
-# # 创建一个空的列表来存储分隔后的名字部分
-# filename_list = []
-
-# # 遍历文件夹中的所有文件
-# for filename in os.listdir(folder_path):
-#     # 只处理以 .tsv 结尾的文件
-#     if filename.endswith('.tsv'):
-#         # 以 '_' 分隔文件名，并将结果存入列表
-#         name_parts = filename.split('_')
-#         filename_list.append(name_parts[0])
-
 # # 输出文件名列表
 # #print(filename_list)
 
